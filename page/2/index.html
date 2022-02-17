@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>上下其手</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Diary of Marketing &amp; Programming">
+<meta property="og:type" content="website">
+<meta property="og:title" content="上下其手">
+<meta property="og:url" content="https://richieliu.top/page/2/index.html">
+<meta property="og:site_name" content="上下其手">
+<meta property="og:description" content="Diary of Marketing &amp; Programming">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Richie">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="上下其手" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">上下其手</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://richieliu.top"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-搜索引擎核心技术" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/09/09/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/" class="article-date">
+  <time datetime="2021-09-09T01:49:25.000Z" itemprop="datePublished">2021-09-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/09/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/">搜索引擎核心技术</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、搜索引擎技术发展史"><a href="#一、搜索引擎技术发展史" class="headerlink" title="一、搜索引擎技术发展史"></a>一、搜索引擎技术发展史</h3><p>定义：一种用来在计算机网络，特别是在万维网上检索各种文件的计算机程序。从本质上讲，如果将搜索引擎的搜索结果看作一种动态网页，那么这种动态网页通过提交的检索关键词聚合了各种<u>重要、有价值并与关键词相关的网页</u>。因此，与其说搜索引擎是一个查询系统，不如说它是一个用户定义的信息聚合系统。通过用户输入的查询关键词，搜索引擎推测用户的查询意图，然后快速地返回相关的查询结果，供用户选择。</p>
+<p>需求：互联网发展，网站数量越来越多，普通用户已经无法以手工浏览的方式获取自己想要的信息。</p>
+<ol>
+<li>分类目录：导航时代，类似国内hao123，需要人工编辑导航目录，满足查询重要网站的需求，没有采用什么高深的技术手段<ol>
+<li>优点：收录的网站质量比较高，可扩展性不强，绝大部分网站不能收录（可信赖）</li>
+</ol>
+</li>
+<li>第一代：文本检索的一代，采用经典的信息检索模型，来计算用户查询关键词和网页文本内容的相关程度。<ol>
+<li>优点：可收录大部分网页，并能够按照网页内容和用户查询的匹配程度进行排序，但搜索质量不是很好（相关性）</li>
+</ol>
+</li>
+<li>第二代：链接分析的一代，充分利用了网页之间的链接关系，链接=推荐，通过链接分析可以在海量内容中找出重要的网页，改善搜索质量。<ol>
+<li>优点：改善搜索质量。（可信赖）</li>
+</ol>
+</li>
+<li>第三代：用户中心的一代，理解用户需求为核心<ol>
+<li>优点：获取用户真实需求（用户需求）</li>
+</ol>
+</li>
+</ol>
+<h3 id="二、搜索的地位"><a href="#二、搜索的地位" class="headerlink" title="二、搜索的地位"></a>二、搜索的地位</h3><p>搜索是目前解决信息过载的相对有效方式，搜索作为网站和应用的入口。</p>
+<p>需求：海量数据的产生（数据）—&gt;通过搜索（入口）—&gt;提供服务（内容）</p>
+<h5 id="1-搜索引擎的目标"><a href="#1-搜索引擎的目标" class="headerlink" title="1. 搜索引擎的目标"></a>1. 搜索引擎的目标</h5><ol>
+<li>更全：网页数量</li>
+<li>更快：技术实力</li>
+<li>更准：最关键目标，增强用户体验，核心竞争力</li>
+</ol>
+<h5 id="2-搜索引擎的核心问题"><a href="#2-搜索引擎的核心问题" class="headerlink" title="2.搜索引擎的核心问题"></a>2.搜索引擎的核心问题</h5><ol>
+<li>用户真正的需求是什么：搜索关键词（意图、需求）</li>
+<li>信息和用户需求真正相关性：匹配用户需求的内容（内容相关性）</li>
+<li>信息是用户可信赖的：信息的权威性（权威性）</li>
+</ol>
+<h3 id="三、搜索引擎的技术架构"><a href="#三、搜索引擎的技术架构" class="headerlink" title="三、搜索引擎的技术架构"></a>三、搜索引擎的技术架构</h3><p>工作流程：海量数据获取—&gt;存储—&gt;对用户查询的快速而准确的响应（相关性+权威性）。</p>
+<p><img src="https://i.bmp.ovh/imgs/2021/09/a6d2a61127d27314.png" alt="搜索引擎整体架构"></p>
+<p>功能划分：</p>
+<ol>
+<li><p>下载系统（爬虫）</p>
+<p>负责从网上下载各种类型的网页，并且保持对万维网变化的同步</p>
+</li>
+<li><p>分析系统</p>
+<p>负责抽取下载系统得到的网页数据，并进行PR和分词计算</p>
+</li>
+<li><p>索引系统</p>
+<p>负责将分析系统处理后的网页对象索引入库</p>
+</li>
+<li><p>查询系统</p>
+<p>负责分析用户提交的查询请求，然后从索引库中检索出相关网页并将网页排序后，以查询结果的形式返回给用户</p>
+</li>
+</ol>
+<p>流程：由下载系统以某种策略自动地在万维网上搜集和发现信息，由索引系统为搜索到的信息建立索引，由查询系统根据用户的查询输入检索索引库，并将查询结果返回给用户。</p>
+<p><img src="https://i.bmp.ovh/imgs/2021/09/240aa832526b53fb.png" alt="搜索引擎结构图"></p>
+<h5 id="1-网络爬虫（下载系统）"><a href="#1-网络爬虫（下载系统）" class="headerlink" title="1. 网络爬虫（下载系统）"></a>1. 网络爬虫（下载系统）</h5><p>网络爬虫，就是下载系统，将海量的网页数据传送到本地，在本地形成互联网网页的镜像备份。</p>
+<p>所有的搜索引擎只能索引互联网的一部分，而所谓的抓取网页覆盖率指的是爬虫抓取的网页数量占互联网所有网页数量的比例；爬虫抓取到本地的网页中，必有一部分过期的数据，网页库过期的数据越少，网页的时新性越好；爬虫抓回的网页都是比较重要的网页，等价于搜索引擎的搜索精度高。</p>
+<h5 id="2-搜索引擎索引"><a href="#2-搜索引擎索引" class="headerlink" title="2. 搜索引擎索引"></a>2. 搜索引擎索引</h5><p>索引是非常常用的数据结构，比如书籍目录就是一种索引结构，根本目的就是为了在具体应用中加快查找速度，让用户尽快找到有价值的内容。</p>
+<p>对搜索引擎来说，如何快速找到包含用户查询词的所有网页？搜索引擎的索引就是实现单词-文档矩阵的具体数据结构。倒排索引是单词到文档映射关系的最佳实现方式。</p>
+<h5 id="3-索引压缩"><a href="#3-索引压缩" class="headerlink" title="3. 索引压缩"></a>3. 索引压缩</h5><p>倒排索引主要包含两个构成部分：单词词典+单词对应的倒排列表。利用数据压缩算法，有效将数据量减少，一方面减少索引占用的磁盘空间，另一方面减少磁盘读写数据量，加快用户查询的响应速度。</p>
+<h5 id="4-检索模型与搜索排序"><a href="#4-检索模型与搜索排序" class="headerlink" title="4. 检索模型与搜索排序"></a>4. 检索模型与搜索排序</h5><p>搜索结果排序是搜索引擎最核心的构成部分，很大程度决定了搜索引擎的质量好坏及用户接受与否。搜索引擎实际排序融合了上百种排序因子，但最重要的两个因素还是：</p>
+<ol>
+<li>用户查询和网页的内容相关性</li>
+<li>网页链接的情况</li>
+</ol>
+<p>判断网页内容是否与用户查询相关，这依赖于搜索引擎所采用的检索模型。什么是好的检索模型，当用户发出查询词，搜索的文档集合按照两个维度，划分4个象限</p>
+<ol>
+<li>是否相关</li>
+<li>是否包含查询词</li>
+</ol>
+<h5 id="5-链接分析"><a href="#5-链接分析" class="headerlink" title="5. 链接分析"></a>5. 链接分析</h5><p>通过链接分析方法计算获得的得分，即网页的重要性。搜索引擎融合相关性+重要性来对搜索结果进行排序。</p>
+<h5 id="6-云存储与云计算"><a href="#6-云存储与云计算" class="headerlink" title="6. 云存储与云计算"></a>6. 云存储与云计算</h5><p>存储及云计算平台，使得存储和管理这些海量数据简单化。</p>
+<h5 id="7-网页反作弊"><a href="#7-网页反作弊" class="headerlink" title="7. 网页反作弊"></a>7. 网页反作弊</h5><p>针对搜索引擎排名进行分析，并采取一定手段来提高网站排名。</p>
+<h5 id="8-用户查询意图分析"><a href="#8-用户查询意图分析" class="headerlink" title="8. 用户查询意图分析"></a>8. 用户查询意图分析</h5><p>用户查询词真实意图分析。</p>
+<h5 id="9-网页去重"><a href="#9-网页去重" class="headerlink" title="9. 网页去重"></a>9. 网页去重</h5><p>重复页面处理。</p>
+<h5 id="10-搜索引擎缓存机制"><a href="#10-搜索引擎缓存机制" class="headerlink" title="10. 搜索引擎缓存机制"></a>10. 搜索引擎缓存机制</h5><p>使用缓存系统能够加快用户查询响应得速度，同时有效减少搜索引擎后台计算量，节省计算资源。</p>
+<h5 id="11-搜索引擎发展趋势"><a href="#11-搜索引擎发展趋势" class="headerlink" title="11. 搜索引擎发展趋势"></a>11. 搜索引擎发展趋势</h5><p>新趋势：</p>
+<ol>
+<li>个性化搜索</li>
+<li>社会化搜索</li>
+<li>实时搜索</li>
+<li>移动搜索</li>
+<li>地理位置感知搜索</li>
+<li>跨语言搜索</li>
+<li>多媒体搜索</li>
+<li>情景搜索</li>
+</ol>
+<hr>
+<p>作为开发者，你需要知晓搜索引擎的核心技术，能够开发更完美的搜索引擎，为用户提供更精准的搜索结果。</p>
+<p>作为市场人，你需要知晓基础原理，理解搜索引擎优化是一种思想（别管SEO、ASO、WSO等），顺应搜索引擎的规则和目的，并在此基础之上开展优化（结果论英雄，别管白帽和黑帽）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://richieliu.top/2021/09/09/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/" data-id="cktcb6wjw0000pkuy167d2bjk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SEO/" rel="tag">SEO</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-公众号生意" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/09/08/%E5%85%AC%E4%BC%97%E5%8F%B7%E7%94%9F%E6%84%8F/" class="article-date">
+  <time datetime="2021-09-08T05:24:23.000Z" itemprop="datePublished">2021-09-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/08/%E5%85%AC%E4%BC%97%E5%8F%B7%E7%94%9F%E6%84%8F/">公众号生意</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>“以生意的角度看事情”，如果不做公号，或许永远理解不了公号是一门生意。</p>
+<blockquote>
+<p>不谈内容，这只是一门生意，”做号”！百万初级，亿万高级，资本神级</p>
+</blockquote>
+<p>红利时代，有粉丝有流量就会有钱，一群对社会生产毫无贡献的人却拿着很多社会精英永远赚不到的钱。</p>
+<h3 id="一、赚钱理论"><a href="#一、赚钱理论" class="headerlink" title="一、赚钱理论"></a>一、赚钱理论</h3><p>赚钱，就是开眼、复制、创新、规模：</p>
+<ol>
+<li>开眼：研究别人，商业模式</li>
+<li>复制：底层逻辑，为我所用</li>
+<li>创新：取其精华，去其糟粕</li>
+<li>规模：抓住机会，快马加鞭</li>
+</ol>
+<h3 id="二、公号生意"><a href="#二、公号生意" class="headerlink" title="二、公号生意"></a>二、公号生意</h3><p>不从生意角度看，你看到的只是表象，毫无生趣；从生意角度看，你看到的都是矿产，遍地机遇。公号就是如此，短视频、电商平台等都是同样原理。</p>
+<p>公号粉丝价值：</p>
+<ol>
+<li>原创粉</li>
+<li>营销粉</li>
+<li>活动粉</li>
+<li>僵尸粉</li>
+</ol>
+<p>牛逼的判断力+强大的执行力，很多时代都有套利的途径，从域名交易、网站交易、公号交易，都是如此。</p>
+<h3 id="三、公号理念"><a href="#三、公号理念" class="headerlink" title="三、公号理念"></a>三、公号理念</h3><p>内容-粉丝-变现。再小的个体，也有自己的品牌。</p>
+<p>好内容固然重要，但是如果不会做内容，以下几类行业也照样可以留住粉丝，只要对别人有用。</p>
+<ol>
+<li>工具类：解决用户实际问题</li>
+<li>资源类：无脑搬运，更新资源库</li>
+<li>明星类：截流，名字关键，自带流量，涨粉容易，操作简单</li>
+<li>信仰类：截流，名字关键，定位精准，粉丝粘性高</li>
+</ol>
+<p>定位很重要，再小的需求，只要有粉丝流量池，都值得尝试。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://richieliu.top/2021/09/08/%E5%85%AC%E4%BC%97%E5%8F%B7%E7%94%9F%E6%84%8F/" data-id="cktb7c27t0000nguy47jgaq4v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-流量行业" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/09/02/%E6%B5%81%E9%87%8F%E8%A1%8C%E4%B8%9A/" class="article-date">
+  <time datetime="2021-09-02T01:52:14.000Z" itemprop="datePublished">2021-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/02/%E6%B5%81%E9%87%8F%E8%A1%8C%E4%B8%9A/">流量行业</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>进入流量行业，就要去理解流量这门生意，就要专注去学习，去实践。</p>
+<h3 id="SEO基础及进阶"><a href="#SEO基础及进阶" class="headerlink" title="SEO基础及进阶"></a>SEO基础及进阶</h3><ol>
+<li>SEO入门</li>
+<li>SEO站内优化</li>
+<li>SEO站外优化（外链）</li>
+<li>SEO常用工具</li>
+<li>SEO案例</li>
+<li>SEO诊断</li>
+<li>SEO FAQ</li>
+</ol>
+<h3 id="流量渠道"><a href="#流量渠道" class="headerlink" title="流量渠道"></a>流量渠道</h3><ol>
+<li>百度系流量</li>
+<li>微信系流量</li>
+<li>头条系流量</li>
+<li>微博系流量</li>
+<li>知乎系流量</li>
+<li>小红书与B站</li>
+</ol>
+<h3 id="流量营销"><a href="#流量营销" class="headerlink" title="流量营销"></a>流量营销</h3><ol>
+<li>企业营销</li>
+<li>新媒体与自媒体</li>
+<li>视频与直播</li>
+<li>个人品牌</li>
+<li>付费流量</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://richieliu.top/2021/09/02/%E6%B5%81%E9%87%8F%E8%A1%8C%E4%B8%9A/" data-id="ckt2gcq4v00000kuyf8h703w5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SEO/" rel="tag">SEO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%87%AA%E8%A8%80%E8%87%AA%E8%AF%AD/" rel="tag">自言自语</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-公号产品功能手册" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/08/30/%E5%85%AC%E5%8F%B7%E4%BA%A7%E5%93%81%E5%8A%9F%E8%83%BD%E6%89%8B%E5%86%8C/" class="article-date">
+  <time datetime="2021-08-30T07:44:15.000Z" itemprop="datePublished">2021-08-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/30/%E5%85%AC%E5%8F%B7%E4%BA%A7%E5%93%81%E5%8A%9F%E8%83%BD%E6%89%8B%E5%86%8C/">公号产品功能手册</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近一直在写公众号，突然发现公众号貌似没有产品说明文档，或许是因为产品功能过于简单，人人都可上手操作，但出于无聊，自己为公号梳理下产品功能文档。</p>
+<h3 id="一、首页"><a href="#一、首页" class="headerlink" title="一、首页"></a>一、首页</h3><p>首页比较简洁，主要分为：</p>
+<ol>
+<li>通知：微信公众号最新通知消息（主要目的是了解公号的政策）</li>
+<li>账号整体情况：（最重要的就是粉丝用户数及粉丝消息）<ol>
+<li>新消息（粉丝发送的消息）</li>
+<li>新增用户（新增用户数量）</li>
+<li>总用户数（总的用户数量）</li>
+</ol>
+</li>
+<li>新的创作（内容可创作类别，字面意思）<ol>
+<li>图文消息：全功能</li>
+<li>文字消息：文字</li>
+<li>视频消息：视频</li>
+<li>音频消息：音频</li>
+<li>图片消息：图片</li>
+<li>转载：转载原创图文</li>
+</ol>
+</li>
+<li>定时群发（主要针对群发时定时任务，会显示在这里）</li>
+<li>近期编辑（近期编辑的内容素材）</li>
+<li>已群发（已群发的内容，可搜索）<ol>
+<li>时间、阅读、在看、点赞（与手机端数据一致）</li>
+</ol>
+</li>
+</ol>
+<h3 id="二、内容与互动"><a href="#二、内容与互动" class="headerlink" title="二、内容与互动"></a>二、内容与互动</h3><h5 id="1-创作（内容制作）"><a href="#1-创作（内容制作）" class="headerlink" title="1. 创作（内容制作）"></a>1. 创作（内容制作）</h5><ol>
+<li>图文素材（创造不同类型内容，同时可设置图文模板）<ol>
+<li>图文模板：方便直接引用自定义的图文格式</li>
+</ol>
+</li>
+<li>素材库（包含图片、音频、视频）</li>
+<li>原创（原创图文，全局可转载账号）</li>
+</ol>
+<h5 id="2-互动"><a href="#2-互动" class="headerlink" title="2. 互动"></a>2. 互动</h5><ol>
+<li>消息：（近期粉丝消息，已收藏的粉丝消息）</li>
+<li>赞赏：（原创内容赞赏账户）</li>
+<li>用户管理：（已关注，黑名单）</li>
+<li>视频弹幕：（公号上传视频并以视频消息方式群发才可开启弹幕）</li>
+</ol>
+<h5 id="3-内容工具"><a href="#3-内容工具" class="headerlink" title="3. 内容工具"></a>3. 内容工具</h5><ol>
+<li>自动回复：（关键词回复、收到消息回复、被关注回复）</li>
+<li>自定义菜单：（自定义菜单，<u>会收录到关键词排名中</u>）</li>
+<li>话题标签：（方便用户连续浏览相同主题内容，页面模板主要用于放在自定义菜单中发布公众号页面）</li>
+<li>投票：（投票场景，数据收集）</li>
+<li>号内搜索：（帮助用户快速检索号内关联内容）</li>
+</ol>
+<h3 id="三、数据"><a href="#三、数据" class="headerlink" title="三、数据"></a>三、数据</h3><ol>
+<li>内容分析（内容质量，吸引用户的内容）</li>
+<li>用户分析（用户来源，用户画像）</li>
+<li>菜单分析（用户需求分析）</li>
+<li>消息分析（用户需求挖掘）</li>
+<li>接口分析（二次开发场景）</li>
+<li>网页分析（二次开发场景）</li>
+</ol>
+<h3 id="四、广告与服务"><a href="#四、广告与服务" class="headerlink" title="四、广告与服务"></a>四、广告与服务</h3><h5 id="1-广告（投放-amp-分销-amp-推广）"><a href="#1-广告（投放-amp-分销-amp-推广）" class="headerlink" title="1. 广告（投放&amp;分销&amp;推广）"></a>1. 广告（投放&amp;分销&amp;推广）</h5><ol>
+<li>广告主：投放广告</li>
+<li>流量主：为公号运营者提供变现方式，获得广告分成，返佣等</li>
+<li>返佣商品推广：商家商品投放</li>
+</ol>
+<h5 id="2-服务（我的商店）"><a href="#2-服务（我的商店）" class="headerlink" title="2. 服务（我的商店）"></a>2. 服务（我的商店）</h5><ol>
+<li>我的商店：自己开店</li>
+</ol>
+<h5 id="3-小程序（与小程序关联）"><a href="#3-小程序（与小程序关联）" class="headerlink" title="3. 小程序（与小程序关联）"></a>3. 小程序（与小程序关联）</h5><ol>
+<li>小程序管理：与小程序关联</li>
+</ol>
+<h5 id="4-更多能力"><a href="#4-更多能力" class="headerlink" title="4. 更多能力"></a>4. 更多能力</h5><ol>
+<li>微信搜一搜：SEM广告投放</li>
+</ol>
+<h3 id="五、设置与开发"><a href="#五、设置与开发" class="headerlink" title="五、设置与开发"></a>五、设置与开发</h3><h5 id="1-基本设置"><a href="#1-基本设置" class="headerlink" title="1. 基本设置"></a>1. 基本设置</h5><ol>
+<li>公众号设置（账号详情、功能设置、授权管理）</li>
+<li>人员设置（账号管理员和账号运营者）</li>
+<li>安全设置（风险操作、修改密码）</li>
+<li>违规记录（违规记录查看）</li>
+</ol>
+<h5 id="2-开发"><a href="#2-开发" class="headerlink" title="2. 开发"></a>2. 开发</h5><ol>
+<li>基本配置</li>
+<li>开发者工具</li>
+<li>运维中心</li>
+<li>接口权限</li>
+</ol>
+<h5 id="3-新的功能（扩展功能）"><a href="#3-新的功能（扩展功能）" class="headerlink" title="3. 新的功能（扩展功能）"></a>3. 新的功能（扩展功能）</h5>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://richieliu.top/2021/08/30/%E5%85%AC%E5%8F%B7%E4%BA%A7%E5%93%81%E5%8A%9F%E8%83%BD%E6%89%8B%E5%86%8C/" data-id="cksyeb2k600000wuy2gyscgpl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python条件控制和循环" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/08/27/Python%E6%9D%A1%E4%BB%B6%E6%8E%A7%E5%88%B6%E5%92%8C%E5%BE%AA%E7%8E%AF/" class="article-date">
+  <time datetime="2021-08-27T03:49:39.000Z" itemprop="datePublished">2021-08-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/27/Python%E6%9D%A1%E4%BB%B6%E6%8E%A7%E5%88%B6%E5%92%8C%E5%BE%AA%E7%8E%AF/">Python条件控制和循环</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、Python条件控制"><a href="#一、Python条件控制" class="headerlink" title="一、Python条件控制"></a>一、Python条件控制</h3><p>Python条件语句是通过一条或多条语句的执行结果（True或者False）来决定执行的代码块。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> condition_1:</span><br><span class="line">    statement_block_1</span><br><span class="line"><span class="keyword">elif</span> condition_2:</span><br><span class="line">    statement_block_2</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    statement_block_3</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、Python循环"><a href="#二、Python循环" class="headerlink" title="二、Python循环"></a>二、Python循环</h3><p>Python中的循环语句有for和while。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/uploads/2014/05/while_loop_1.png" alt="Python循环语句的控制结构图"></p>
+<h5 id="1-while循环"><a href="#1-while循环" class="headerlink" title="1. while循环"></a>1. while循环</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> 判断条件：</span><br><span class="line">    statements</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-for语句"><a href="#2-for语句" class="headerlink" title="2. for语句"></a>2. for语句</h5><p>for循环可以遍历任何序列的项目。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> &lt;variable&gt; <span class="keyword">in</span> &lt;sequence&gt;:</span><br><span class="line">  &lt;statements&gt;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line"> &lt;statements&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-range-函数"><a href="#3-range-函数" class="headerlink" title="3. range()函数"></a>3. range()函数</h5><p>如果需要遍历数字序列，可以使用内置<code>range()</code>函数，它会生成数列。</p>
+<h5 id="4-break和continue语句以及循环中的else子句"><a href="#4-break和continue语句以及循环中的else子句" class="headerlink" title="4. break和continue语句以及循环中的else子句"></a>4. break和continue语句以及循环中的else子句</h5><ol>
+<li>break语句可以跳出for和while的循环体</li>
+<li>continue语句可以跳过当前循环中的当此循环，然后继续进行下一轮循环</li>
+<li>else子句，它在穷尽列表（for循环）或条件变为假（while循环）循环终止时被执行，但循环被break终止时不执行</li>
+</ol>
+<h5 id="5-pass语句"><a href="#5-pass语句" class="headerlink" title="5. pass语句"></a>5. pass语句</h5><p>pass语句什么都不做。</p>
+<h3 id="三、迭代器与生成器"><a href="#三、迭代器与生成器" class="headerlink" title="三、迭代器与生成器"></a>三、迭代器与生成器</h3><h5 id="1-迭代器"><a href="#1-迭代器" class="headerlink" title="1. 迭代器"></a>1. 迭代器</h5><p>迭代是访问集合元素的一种方式。</p>
+<p>迭代器是一个可以记住遍历的位置的对象。迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完结束。迭代器只能往前不会后退。</p>
+<p>迭代器有两个基本的方法：<code>iter()</code> 和 <code>next()</code>。</p>
+<p>字符串，列表或元组对象都可用于创建迭代器，迭代器对象可以使用常规 for 语句进行遍历。</p>
+<h5 id="2-生成器"><a href="#2-生成器" class="headerlink" title="2. 生成器"></a>2. 生成器</h5><p>使用了 yield 的函数被称为生成器（generator）。</p>
+<p>跟普通函数不同的是，生成器是一个返回迭代器的函数，只能用于迭代操作，更简单点理解生成器就是一个迭代器。</p>
+<p>在调用生成器运行的过程中，每次遇到 yield 时函数会暂停并保存当前所有的运行信息，返回 yield 的值。并在下一次执行 next() 方法时从当前位置继续运行。</p>
+<h5 id="3-sys模块介绍"><a href="#3-sys模块介绍" class="headerlink" title="3. sys模块介绍"></a>3. sys模块介绍</h5><p>在 Python 的 sys 模块提供访问解释器使用或维护的变量，和与解释器进行交互的函数。</p>
+<p>通俗来讲，sys 模块负责程序与 Python 解释器的交互，提供了一系列的函数和变量，用于操控 Python 运行时的环境。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://richieliu.top/2021/08/27/Python%E6%9D%A1%E4%BB%B6%E6%8E%A7%E5%88%B6%E5%92%8C%E5%BE%AA%E7%8E%AF/" data-id="ckstz15180000ckuyaul2hp8o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python基础数据类型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/08/25/Python%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="article-date">
+  <time datetime="2021-08-25T06:18:44.000Z" itemprop="datePublished">2021-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/25/Python%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">Python基础数据类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、Numbers（数字）"><a href="#一、Numbers（数字）" class="headerlink" title="一、Numbers（数字）"></a>一、Numbers（数字）</h3><p>支持int、float、bool、complex（复数）、bool（布尔）</p>
+<p>内置<code>type()</code>函数可以用来查询变量所指的对象类型，或者用<code>isinstnce()</code>来判断</p>
+<p>数值类型是不允许改变的，如果改变数字数据类型的值，将重新分配内存空间。</p>
+<h3 id="二、String（字符串）"><a href="#二、String（字符串）" class="headerlink" title="二、String（字符串）"></a>二、String（字符串）</h3><p>字符串用单引号（’’）或双引号（””）括起来，同时使用反斜杠（\）转义特殊字符</p>
+<p>两种索引方式：从左往右，从右往左</p>
+<p>可以切片，获取一段字串。用冒号分隔两个索引，形式为变量【头下标：尾下标】</p>
+<p>字符串不可变</p>
+<h3 id="三、List（列表）"><a href="#三、List（列表）" class="headerlink" title="三、List（列表）"></a>三、List（列表）</h3><p>列表是写在方括号之间，用逗号分隔开的元素列表。</p>
+<p>支持索引和切片。</p>
+<p>列表是可变的</p>
+<h3 id="四、Tuple（元组）"><a href="#四、Tuple（元组）" class="headerlink" title="四、Tuple（元组）"></a>四、Tuple（元组）</h3><p>元组是写在小括号里，元素之间用逗号隔开</p>
+<p>支持索引和切片</p>
+<p>元组不可变的</p>
+<h3 id="五、Sets（集合）"><a href="#五、Sets（集合）" class="headerlink" title="五、Sets（集合）"></a>五、Sets（集合）</h3><p>集合是一个无序不重复元素的集</p>
+<p>可以使用大括号或者<code>set()</code>函数创建set集合，注意：创建一个空集合必须用<code>set()</code>而不是{}，因为{}是用来创建一个空字典</p>
+<h3 id="六、Dictionary（字典）"><a href="#六、Dictionary（字典）" class="headerlink" title="六、Dictionary（字典）"></a>六、Dictionary（字典）</h3><p>字典是一种映射类型，它是一个无序的键：值对集合</p>
+<p>关键字必须使用不可变类型，也就是说list和包含可变类型的tuple不能做关键字</p>
+<p>在同一个字典中，关键字还必须互不相同</p>
+<p>够造函数<code>dict()</code>直接从键值对sequence（序列）中够造字典</p>
+<hr>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><ol>
+<li><p>算术运算符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+、-、*、/、%、**、//</span><br></pre></td></tr></table></figure></li>
+<li><p>比较（关系）运算符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">==、!=、&gt;、&lt;、&gt;=、&lt;=</span><br></pre></td></tr></table></figure></li>
+<li><p>赋值运算符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=、+=、-=、*=、/=、%=、**=、//=</span><br></pre></td></tr></table></figure></li>
+<li><p>位运算符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;、|、^、~、&lt;&lt;、&gt;&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>逻辑运算符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">and</span>、<span class="keyword">or</span>、<span class="keyword">not</span></span><br></pre></td></tr></table></figure></li>
+<li><p>成员运算符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span>、<span class="keyword">not</span> <span class="keyword">in</span></span><br></pre></td></tr></table></figure></li>
+<li><p>身份运算符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">is</span>、<span class="keyword">is</span> <span class="keyword">not</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h5><table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">**</td>
+<td align="left">指数 (最高优先级)</td>
+</tr>
+<tr>
+<td align="left">~ + -</td>
+<td align="left">按位翻转, 一元加号和减号 (最后两个的方法名为 +@ 和 -@)</td>
+</tr>
+<tr>
+<td align="left">* / % //</td>
+<td align="left">乘，除，取模和取整除</td>
+</tr>
+<tr>
+<td align="left">+ -</td>
+<td align="left">加法减法</td>
+</tr>
+<tr>
+<td align="left">&gt;&gt; &lt;&lt;</td>
+<td align="left">右移，左移运算符</td>
+</tr>
+<tr>
+<td align="left">&amp;</td>
+<td align="left">位 ‘AND’</td>
+</tr>
+<tr>
+<td align="left">^ |</td>
+<td align="left">位运算符</td>
+</tr>
+<tr>
+<td align="left">&lt;= &lt; &gt; &gt;=</td>
+<td align="left">比较运算符</td>
+</tr>
+<tr>
+<td align="left">&lt;&gt; == !=</td>
+<td align="left">比较运算符</td>
+</tr>
+<tr>
+<td align="left">= %= /= //= -= += *= **=</td>
+<td align="left">赋值运算符</td>
+</tr>
+<tr>
+<td align="left">is is not</td>
+<td align="left">身份运算符</td>
+</tr>
+<tr>
+<td align="left">in not in</td>
+<td align="left">成员运算符</td>
+</tr>
+<tr>
+<td align="left">not or and</td>
+<td align="left">逻辑运算符</td>
+</tr>
+</tbody></table>
+<h3 id="七、总结数据类型"><a href="#七、总结数据类型" class="headerlink" title="七、总结数据类型"></a>七、总结数据类型</h3><p>数据类型：</p>
+<ol>
+<li>字符串string</li>
+<li>数字类型Number<ol>
+<li>整型int</li>
+<li>浮点float</li>
+<li>复数complex</li>
+<li>布尔bool</li>
+</ol>
+</li>
+<li>列表list</li>
+<li>元组tuple</li>
+<li>字典dict</li>
+<li>集合set</li>
+</ol>
+<p>特征：</p>
+<ol>
+<li>可变数据类型：列表、字典、集合</li>
+<li>不可变数据类型：字符串、数字、元组</li>
+<li>容器类型数据：字符串、列表、元组、集合、字典</li>
+<li>非容器类数据：数字、布尔类型</li>
+</ol>
+<h3 id="附-进制转换"><a href="#附-进制转换" class="headerlink" title="附:进制转换"></a>附:进制转换</h3><p>进制：</p>
+<ol>
+<li>二进制</li>
+<li>八进制</li>
+<li>十进制</li>
+<li>十六进制</li>
+</ol>
+<p>转换：</p>
+<ol>
+<li>十进制转换为二进制（除2取余，逆序排列）</li>
+<li>二进制转换为十进制（按权展开求和）</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://richieliu.top/2021/08/25/Python%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-id="cksr5cwb30000bguyfvvpelsj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-微信公众号数据分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/08/23/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="article-date">
+  <time datetime="2021-08-23T06:29:34.000Z" itemprop="datePublished">2021-08-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/23/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">微信公众号数据分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>微信公众号数据分析，从数据中挖掘用户价值信息（用户行为逻辑），公号数据分析主要分为内容、用户、菜单、消息、接口、网页六个部分。</p>
+<h4 id="一、内容分析"><a href="#一、内容分析" class="headerlink" title="一、内容分析"></a>一、内容分析</h4><p>主要分为：群发分析、多媒体分析；<u>产品内容质量价值</u>！找到关键流量点，总结内容规律。</p>
+<ol>
+<li><p>群发分析</p>
+<p><u>群发后不同渠道产生的阅读次数及阅读人数。</u></p>
+<ol>
+<li><p>全部群发（渠道、次数、人数）</p>
+<ol>
+<li>关键指标（昨日阅读次数、分享次数、完成阅读次数）<ol>
+<li>阅读次数：打开文章的次数，阅读越高，内容越高（标题的吸引力）</li>
+<li>分享次数：分享越多，内容质量越高（文章质量、点赞、留言、在看）</li>
+<li>完成阅读次数：阅读完成率越高，内容质量越高</li>
+</ol>
+</li>
+<li>数据趋势（日报、小时报）<ol>
+<li>日报（每天不同传播渠道的阅读、分享等次数和人数）<ol>
+<li>数据指标<ol>
+<li>阅读（不同渠道阅读次数、人数）</li>
+<li>分享（不同渠道分享次数、人数）</li>
+<li>跳转阅读原文（跳转人数）</li>
+<li>微信收藏（收藏人数）</li>
+<li>群发篇数（群发篇数）</li>
+</ol>
+</li>
+<li><u>传播渠道</u><ol>
+<li>公号消息</li>
+<li>聊天会话</li>
+<li>朋友圈</li>
+<li>朋友在看</li>
+<li>看一看精选</li>
+<li>搜一搜</li>
+<li>公众号主页</li>
+<li>其他</li>
+</ol>
+</li>
+<li>渠道构成<ol>
+<li>总次数</li>
+<li>不同传播渠道占比</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>小时报（每小时不同传播渠道的阅读、分享次数和人数，调整推文时间）<ol>
+<li>数据指标<ol>
+<li>阅读</li>
+<li>分享</li>
+</ol>
+</li>
+<li>传播渠道</li>
+<li>渠道构成<ol>
+<li>昨日阅读次数</li>
+<li>昨日分享次数</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>单篇群发</p>
+<p><u>单篇内容数据详细分析</u></p>
+<ol>
+<li>单片内容分析<ol>
+<li>标题</li>
+<li>时间</li>
+<li>阅读次数</li>
+<li>分析次数</li>
+<li>阅读后关注人数</li>
+<li>送达阅读率</li>
+<li>阅读完成率</li>
+<li>详情<ol>
+<li>总阅读次数</li>
+<li>总分享次数</li>
+<li>阅读后关注人数</li>
+<li>送达人数转化（公众号消息阅读次数）</li>
+<li>分享转化（公众号消息阅读次数、首次分享次数、总分享次数、分享产生的阅读次数）</li>
+<li>数据趋势（图文阅读、图文分享）</li>
+<li>阅读完成情况</li>
+<li>用户画像<ol>
+<li>性别</li>
+<li>年龄</li>
+<li>地域</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>多媒体分析</p>
+<ol>
+<li>全部视频<ol>
+<li>昨日视频关键指标（总播放次数、总分享、完成播放）</li>
+<li>昨日有播放的视频（标题、时间、次数、人数）</li>
+<li>数据明细分析<ol>
+<li>数据指标（视频播放、视频分析）</li>
+<li>渠道<ol>
+<li>公众号消息</li>
+<li>好友转发</li>
+<li>朋友圈</li>
+<li>公众号主页</li>
+<li>观看更多</li>
+<li>其他</li>
+<li>看一看</li>
+<li>搜一搜</li>
+<li>他人转载</li>
+<li>在看</li>
+</ol>
+</li>
+<li>渠道构成</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>单个视频<ol>
+<li>单个视频分析<ol>
+<li>标题</li>
+<li>时间</li>
+<li>播放次数</li>
+<li>分享次数</li>
+<li>详细数据<ol>
+<li>总播放、总分享</li>
+<li>不同渠道视频播放、视频分享</li>
+<li>渠道构成</li>
+<li>播放时长</li>
+<li>用户画像<ol>
+<li>性别</li>
+<li>年龄</li>
+<li>地域</li>
+<li>机型</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>音频<ol>
+<li>关键数据（总播放、完成播放率）</li>
+<li>日报、小时报（播放次数、播放人数）</li>
+<li>已群发音频</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="二、用户分析"><a href="#二、用户分析" class="headerlink" title="二、用户分析"></a>二、用户分析</h4><p>分为三个维度：用户增长、用户属性、常读用户；找到关键用户属性，找到有效渠道来源。</p>
+<ol>
+<li><p>用户增长（新客流量）</p>
+<p><u>用户增长主要考察新客流和老客户的情况，新客流量越大，说明推广效果好，老客户取消关注越少，说明公号质量高。</u></p>
+<ol>
+<li>关键指标（新增人数、取消人数、净增人数、累计人数）<ol>
+<li><u>新增人数-来源：（流量渠道来源）</u><ol>
+<li>搜一搜（搜索流量，SEO）</li>
+<li>扫描二维码（主动推广）</li>
+<li>文章内账号名称（内容转化）</li>
+<li>名片分享（用户主动分享，口碑）</li>
+<li>支付后关注（支付后行为）</li>
+<li>他人转载（原创文章）</li>
+<li>微信广告（广告主投放）</li>
+<li>其他合计（其他渠道来源）</li>
+</ol>
+</li>
+<li>取消人数（公众号价值）</li>
+<li>净增人数（公众号价值）</li>
+<li>累计人数（公众号价值）</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>用户属性（客户画像）</p>
+<p><u>用户属性主要是考察用户画像，方便分析用户特征。</u></p>
+<ol>
+<li>人口特征<ol>
+<li>性别</li>
+<li>年龄</li>
+<li>语言</li>
+</ol>
+</li>
+<li>地域归属<ol>
+<li>省级</li>
+<li>地级</li>
+</ol>
+</li>
+<li>访问设备<ol>
+<li>Android</li>
+<li>iPhone</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>常读用户（常客情况）</p>
+<p><u>常读用户主要是客户情况，指标越高，说明用户越忠实。</u></p>
+<ol>
+<li>用户总览<ol>
+<li>常读用户指标<ol>
+<li>常读用户月净增</li>
+<li>常读用户数</li>
+<li>常读用户比例</li>
+</ol>
+</li>
+<li>常读用户数变化</li>
+</ol>
+</li>
+<li>性别分布<ol>
+<li>分布走势<ol>
+<li>常读</li>
+<li>不常读</li>
+</ol>
+</li>
+<li>月份详情</li>
+</ol>
+</li>
+<li>年龄分布<ol>
+<li>分布走势</li>
+<li>月份详情</li>
+</ol>
+</li>
+<li>城市分布<ol>
+<li>分布走势</li>
+<li>月份详情</li>
+</ol>
+</li>
+<li>终端分布<ol>
+<li>分布走势</li>
+<li>月份详情</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="三、菜单分析"><a href="#三、菜单分析" class="headerlink" title="三、菜单分析"></a>三、菜单分析</h4><p>利用好菜单栏，了解用户真实需求；找到用户兴趣点，合理化菜单和产品定位结合。</p>
+<ol>
+<li>昨日关键指标（菜单点击次数、菜单点击人数、人均点击次数）</li>
+</ol>
+<h4 id="四、消息分析"><a href="#四、消息分析" class="headerlink" title="四、消息分析"></a>四、消息分析</h4><p>主要分为消息分析、消息关键词。利用好关键词，做好需求挖掘和解答。</p>
+<ol>
+<li>消息分析：<ol>
+<li>指标（消息发送人数、消息发送次数、人均发送次数）</li>
+<li>时间（小时、日报、周报、月报）</li>
+</ol>
+</li>
+<li>消息关键词：<ol>
+<li>关键词分析，了解用户需求点。</li>
+</ol>
+</li>
+</ol>
+<h4 id="五、接口分析"><a href="#五、接口分析" class="headerlink" title="五、接口分析"></a>五、接口分析</h4><h4 id="六、网页分析"><a href="#六、网页分析" class="headerlink" title="六、网页分析"></a>六、网页分析</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://richieliu.top/2021/08/23/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" data-id="cksoe6uvo0000souy655s880w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-思考及做事情的方式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/08/23/%E6%80%9D%E8%80%83%E5%8F%8A%E5%81%9A%E4%BA%8B%E6%83%85%E7%9A%84%E6%96%B9%E5%BC%8F/" class="article-date">
+  <time datetime="2021-08-23T02:21:03.000Z" itemprop="datePublished">2021-08-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/23/%E6%80%9D%E8%80%83%E5%8F%8A%E5%81%9A%E4%BA%8B%E6%83%85%E7%9A%84%E6%96%B9%E5%BC%8F/">思考及做事情的方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>从5月23日开始到现在，公众号运营刚好满3个月整，虽然粉丝在正常增长中，但相对来说，增长还是缓慢，这其中最大的原因是自身思考和执行的问题，导致了时间拖延的浪费，粉丝增长缓慢。</p>
+<h3 id="一、思考的问题（目的）"><a href="#一、思考的问题（目的）" class="headerlink" title="一、思考的问题（目的）"></a>一、思考的问题（目的）</h3><ol>
+<li>认知问题：对趋势认识不清楚，特别是这个特殊的行业属性，个人一直排斥投机行为，认为非个人产生的直接价值是无效价值，所以行动上一直拖拖拉拉。（前期一直没有布局矩阵）</li>
+<li>感情思考：加入此行，也是朋友推荐，目前行业竞争上来说并不多，自己如果布局矩阵，势必影响朋友赚钱，别人赚钱的买卖，拉自己进入来抢生意，有点过意不去。（感情用事思考问题）</li>
+</ol>
+<p>互联网流量生意，只争朝夕，目前看一种是产品内容产生收益，一种是推广产生收益。产品内容产生收益，需要精细化、有产品内容的产出，时间久，是一个漫长的过程，一旦爆发，收益无限；推广产生收益，则比较直接，就以赚钱为目的，产品内容不重要，流量获取最重要，赚的就是收益，这种就讲究玩法、手段，只要能得利不犯法，任何行为都可以使用。</p>
+<p>所以在认知上，个人一直在做的是产品内容产生价值的事情，讲究对的起用户，尽量给用户一些好的体验和产品内容价值，但是实际上，目前做的事情并非内容方（产品技术方），所以这些策略行为上对增长并没有太多用处。作为推广方（渠道销售），就是看怎么能揽客截流，吸引更多的人关注，这才是目前最重点要做的事情，要考虑各种手段拉客。</p>
+<p>另外一点就是感情用事的思考方式，这点其实作为朋友一起来做这个事情，各自想法赚钱，用自己手段或借鉴，最主要的目的是赚钱，而不是因为感情原因，自己不好意思去行动，去做这个事情，明白当下最主要的目的才是最重要的。</p>
+<h3 id="二、执行的问题（行动）"><a href="#二、执行的问题（行动）" class="headerlink" title="二、执行的问题（行动）"></a>二、执行的问题（行动）</h3><ol>
+<li>执行力：有想法没有及时执行，那么就只能接受失败</li>
+</ol>
+<p>有了目的，你就应该带着目的去落地执行，而不是犯懒惰，拖延症，迟迟不愿意开动，目前情况如同产品（内容）有了，门面（公众号）有了，就看如何揽客截留去推广，去裂变，去找这个行业的方法和痛点，快速的抓住这波粉丝。</p>
+<p>执行过程中，要及时分析，及时复盘，及时反馈结果，而不是一拖再拖的不去执行。同时要坦然面对市场竞争，各种竞争手段都应该接受，不应该沉迷于局部的，应该全局看问题，这才是市场、销售、运营该有的思维。</p>
+<h3 id="三、如何找更多的赚钱机会（复盘）"><a href="#三、如何找更多的赚钱机会（复盘）" class="headerlink" title="三、如何找更多的赚钱机会（复盘）"></a>三、如何找更多的赚钱机会（复盘）</h3><ol>
+<li>轻松赚钱：如果不是入行这个项目，真的没想过能够如此轻松赚钱，只能说互联网只要找准项目，真的是金矿，无成本投入的金矿</li>
+</ol>
+<p>目前做的项目终究可能被办，只能尽可能的去赚当下的钱，同时思考其他平台、其他项目，是否有同样的机会可以轻松躺赚，有需求就有机会，有流量的地方就是金矿，只是能否看到，摸清楚别人的玩法。你不需要做的太多，你只要会模仿，几乎就足以应付生活开支，当然玩的好，就不止日常开支了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://richieliu.top/2021/08/23/%E6%80%9D%E8%80%83%E5%8F%8A%E5%81%9A%E4%BA%8B%E6%83%85%E7%9A%84%E6%96%B9%E5%BC%8F/" data-id="ckso6cz5t0000x8uyd1uo6tll" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SEO/" rel="tag">SEO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%87%AA%E8%A8%80%E8%87%AA%E8%AF%AD/" rel="tag">自言自语</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-《网站运营直通车-7天精通SEO》" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/08/13/%E3%80%8A%E7%BD%91%E7%AB%99%E8%BF%90%E8%90%A5%E7%9B%B4%E9%80%9A%E8%BD%A6-7%E5%A4%A9%E7%B2%BE%E9%80%9ASEO%E3%80%8B/" class="article-date">
+  <time datetime="2021-08-13T05:55:57.000Z" itemprop="datePublished">2021-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/13/%E3%80%8A%E7%BD%91%E7%AB%99%E8%BF%90%E8%90%A5%E7%9B%B4%E9%80%9A%E8%BD%A6-7%E5%A4%A9%E7%B2%BE%E9%80%9ASEO%E3%80%8B/">《网站运营直通车-7天精通SEO》</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>互联网是一个只争朝夕的行业，这点需要自身明白，短平快达到目的。</p>
+<p>SEO是网络营销一门不可或缺的营销手段，从各种营销方法来看，SEO是营销车根本最低且效果最好的营销手段。</p>
+<p>SEM搜索引擎营销，把产品自身的优点信息，以最简单的方式告知最有需求的用户。</p>
+<h2 id="一、基础篇"><a href="#一、基础篇" class="headerlink" title="一、基础篇"></a>一、基础篇</h2><p>SEO就是从搜索引擎上获得流量的技术。</p>
+<p>搜索引擎主要有三段工作流程：爬行抓取、预处理及服务输出。</p>
+<p>常用指令：1. site；2.Link；3.related；4.info；5.allintext/intext；6.allinurl/inurl;7.allintitle/intitle；8.allinanchor/inanchor；9.define；10.filetype；11.intitle；12.domain；</p>
+<h2 id="二、站内篇"><a href="#二、站内篇" class="headerlink" title="二、站内篇"></a>二、站内篇</h2><ol>
+<li>元标签的设计（标题标签、关键词标签、描述标签）</li>
+<li>长尾关键词优化（以客户角度的搜索意图和思想来进行部署）</li>
+<li>单页面优化</li>
+<li>URL优化</li>
+<li>robots优化</li>
+<li>nofollow优化</li>
+<li>H标签的优化</li>
+<li>图片的优化</li>
+<li>Flash的优化</li>
+<li>网站地图</li>
+<li>链接优化（单向链接、链接内容相关性、锚文字、链接位置、导出链接数量、物理链接结构优化）</li>
+<li>网页内容（原创、标题、关键词密度、内容优化）</li>
+<li>站内锚文本</li>
+<li>导航结构优化</li>
+</ol>
+<h2 id="三、站外篇"><a href="#三、站外篇" class="headerlink" title="三、站外篇"></a>三、站外篇</h2><ol>
+<li>外部链接</li>
+<li>外链锚文本</li>
+<li>外链获取的方法</li>
+<li>网站品牌提升方法</li>
+<li>网站目录提交</li>
+<li>链接诱饵</li>
+</ol>
+<h2 id="四、高级篇"><a href="#四、高级篇" class="headerlink" title="四、高级篇"></a>四、高级篇</h2><p>除了具有很高执行能力外，还要有一定的分析能力。流量分析、效果检测、惩罚后的拯救措施，以及常见作弊方法的识别等。</p>
+<ol>
+<li>SEO效果检测</li>
+<li>流量监测与分析</li>
+<li>惩罚之后的处理</li>
+<li>常见作弊方法</li>
+<li>白帽与黑帽</li>
+<li>用户体验优化</li>
+</ol>
+<h2 id="五、策略篇"><a href="#五、策略篇" class="headerlink" title="五、策略篇"></a>五、策略篇</h2><p>为了实现某一个目标而预先制定的能够实施的方案。</p>
+<ol>
+<li>关键词策略</li>
+<li>外链策略</li>
+<li>网络营销策略</li>
+<li>网站品牌策略</li>
+<li>网站盈利策略</li>
+</ol>
+<h2 id="六、专题篇"><a href="#六、专题篇" class="headerlink" title="六、专题篇"></a>六、专题篇</h2><ol>
+<li>个性化搜索服务</li>
+<li>整合搜索</li>
+<li>SEO工具</li>
+<li>全站链接与首页链接</li>
+<li>整站设计和优化</li>
+<li>区域性搜索结果</li>
+<li>百度框计算</li>
+</ol>
+<p>本书与看过的《SEO实战密码》结构一样，只是更加精简一些。</p>
+<p>目前来看，SEO书中所描述的都属于基本操作常识，真实的核心手段还需要靠自己实战去探索！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://richieliu.top/2021/08/13/%E3%80%8A%E7%BD%91%E7%AB%99%E8%BF%90%E8%90%A5%E7%9B%B4%E9%80%9A%E8%BD%A6-7%E5%A4%A9%E7%B2%BE%E9%80%9ASEO%E3%80%8B/" data-id="cksa0k07e0000vguyee61alve" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Book/" rel="tag">Book</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SEO/" rel="tag">SEO</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-搜索引擎排名因素和案例分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/08/12/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%8E%92%E5%90%8D%E5%9B%A0%E7%B4%A0%E5%92%8C%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/" class="article-date">
+  <time datetime="2021-08-12T06:07:01.000Z" itemprop="datePublished">2021-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/12/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%8E%92%E5%90%8D%E5%9B%A0%E7%B4%A0%E5%92%8C%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/">搜索引擎排名因素和案例分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、Google排名因素"><a href="#一、Google排名因素" class="headerlink" title="一、Google排名因素"></a>一、Google排名因素</h4><h6 id="1-正面因素："><a href="#1-正面因素：" class="headerlink" title="1.正面因素："></a>1.正面因素：</h6><ol>
+<li>外部链接锚文字包含关键词</li>
+<li>外部链接流行度（外部链接的数量和质量）</li>
+<li>链接来源多样性（链接来源于很多域名）</li>
+<li>标题标签中任何地方使用关键词</li>
+<li>基于与被信任域名的链接距离得到的域名信任度</li>
+</ol>
+<h6 id="2-负面因素："><a href="#2-负面因素：" class="headerlink" title="2.负面因素："></a>2.负面因素：</h6><ol>
+<li>恶意操纵为目的的隐藏页面</li>
+<li>从有名的链接买卖提供商那里得到的链接</li>
+<li>页面上有连向垃圾网站或页面的链接</li>
+<li>检测用户代理类型（浏览器还是蜘蛛），然后隐藏页面</li>
+<li>服务器经常死机，网站不能打开</li>
+</ol>
+<h6 id="3-争议因素："><a href="#3-争议因素：" class="headerlink" title="3.争议因素："></a>3.争议因素：</h6><ol>
+<li>检测是否支持Cookie，然后隐藏页面</li>
+<li>检测JS、富媒体支持，然后隐藏页面</li>
+<li>与背景相同或相似颜色的隐藏文字</li>
+<li>检测访问IP地址，然后隐藏页面</li>
+<li>检测用户代理类型（浏览器还是蜘蛛），然后隐藏页面</li>
+</ol>
+<h6 id="与关键词有关的页面排名因素："><a href="#与关键词有关的页面排名因素：" class="headerlink" title="与关键词有关的页面排名因素："></a>与关键词有关的页面排名因素：</h6><ol>
+<li>标题标签中任何地方使用关键词</li>
+<li>标题标签中第一个字或词使用关键词</li>
+<li>域名中包含关键词</li>
+<li>H1标签中任何地方使用关键词</li>
+<li>页面上导出内部链接锚文字中使用关键词</li>
+<li>页面上导出<u>外部链接锚文字中使用关键词</u></li>
+<li>H1标签中第一个字或词使用关键词</li>
+<li>页面中最前面50~100个可见文字中使用关键词</li>
+<li>子域名包含关键词</li>
+</ol>
+<h6 id="4-其他排名因素"><a href="#4-其他排名因素" class="headerlink" title="4.其他排名因素"></a>4.其他排名因素</h6><ol>
+<li>与关键词有关的页面排名因素</li>
+<li>特定页面链接流行度排名因素（链接为王，链接万岁）</li>
+<li>全站链接排名因素</li>
+<li>全站非链接排名因素</li>
+<li>社会化媒体排名因素</li>
+<li>用户数据排名因素</li>
+<li>负面排名因素</li>
+<li>影响外部链接价值的负面因素</li>
+<li>地理位置因素</li>
+<li>附加SEO数据</li>
+<li>链接建设调查</li>
+</ol>
+<h4 id="二、百度排名因素"><a href="#二、百度排名因素" class="headerlink" title="二、百度排名因素"></a>二、百度排名因素</h4><h6 id="1-与关键词有关的页面排名因素"><a href="#1-与关键词有关的页面排名因素" class="headerlink" title="1.与关键词有关的页面排名因素"></a>1.与关键词有关的页面排名因素</h6><ol>
+<li>标题标签中任何地方使用关键词</li>
+<li>关键词完整匹配出现在页面，关键词邻近度</li>
+<li>标题标签中第一个字或词使用关键词</li>
+<li>H1标签中任何地方使用关键词</li>
+<li>等</li>
+</ol>
+<h6 id="2-其他排名因素"><a href="#2-其他排名因素" class="headerlink" title="2.其他排名因素"></a>2.其他排名因素</h6><ol>
+<li>与关键词无关的页面排名因素</li>
+<li>特定页面链接流行度排名因素</li>
+<li>等</li>
+</ol>
+<h4 id="三、案例分析"><a href="#三、案例分析" class="headerlink" title="三、案例分析"></a>三、案例分析</h4><ol>
+<li>竞争对手分析<ol>
+<li>了解网站基本数据</li>
+<li>外部链接</li>
+<li>Alexa数据</li>
+<li>Google趋势流量</li>
+<li>网站品牌名称热度</li>
+<li>英文比较购物网站情况</li>
+</ol>
+</li>
+<li>竞争对手网站研究<ol>
+<li>域名注册信息</li>
+<li>基本信息</li>
+<li>外部链接</li>
+<li>收录</li>
+<li>QQ书签</li>
+<li>外部锚文字</li>
+<li>网站首页优化<ol>
+<li>Meta标签</li>
+<li>H1标签</li>
+<li>H2使用</li>
+<li>文案写作</li>
+<li>URL静态化</li>
+<li>NoFollow使用</li>
+<li>其他页面优化</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>网站分析<ol>
+<li>域名注册</li>
+<li>Google PR值</li>
+<li>收录</li>
+<li>外部链接</li>
+<li>QQ书签</li>
+<li>基本流量数据<ol>
+<li>流量概况</li>
+<li>流量来源</li>
+<li>用户忠实度</li>
+<li>用户地理位置</li>
+<li>带来流量的关键词</li>
+</ol>
+</li>
+<li>Google网管工具数据和分析<ol>
+<li>外链锚文字</li>
+<li>网站内容</li>
+<li>速度影响抓取</li>
+<li>HTML代码建议</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>关键词研究<ol>
+<li>首页</li>
+<li>分类页面</li>
+<li>商家页面</li>
+<li>品牌页面</li>
+<li>产品页面</li>
+<li>搜索页面</li>
+</ol>
+</li>
+<li>优化建议</li>
+<li>执行、效果及后续</li>
+</ol>
+<h4 id="SEO术语"><a href="#SEO术语" class="headerlink" title="SEO术语"></a>SEO术语</h4><ol>
+<li>301转向</li>
+<li>302转向</li>
+<li>Alexa排名</li>
+<li>白帽SEO</li>
+<li>标签Tag</li>
+<li>补充材料</li>
+<li>垂直搜索</li>
+<li>C类IP地址</li>
+<li>长尾关键词</li>
+<li>惩罚</li>
+<li>CMS</li>
+<li>CPA</li>
+<li>CPC</li>
+<li>CPL</li>
+<li>CPM</li>
+<li>CPS</li>
+<li>导出链接</li>
+<li>倒排索引</li>
+<li>地理位置</li>
+<li>第一屏</li>
+<li>点击率</li>
+<li>动态URL</li>
+<li>动态页面</li>
+<li>Everflux</li>
+<li>反向链接</li>
+<li>复制内容</li>
+<li>个人化搜索</li>
+<li>工具条</li>
+<li>工具条PR</li>
+<li>Google保龄</li>
+<li>Google Dance</li>
+<li>Google迷你全站链接</li>
+<li>Google PR</li>
+<li>Google全站链接</li>
+<li>Google炸弹</li>
+<li>关键词密度</li>
+<li>黑帽SEO</li>
+<li>HTTP头信息</li>
+<li>HTTP状态码</li>
+<li>灰帽SEO</li>
+<li>降权</li>
+<li>交叉链接</li>
+<li>进入页面</li>
+<li>静态URL</li>
+<li>静态页面</li>
+<li>镜像网站</li>
+<li>绝对路径及相对路径</li>
+<li>开发目录DMOZ</li>
+<li>垃圾</li>
+<li>来路</li>
+<li>链接果汁</li>
+<li>链接流行度</li>
+<li>链接农场</li>
+<li>链接nofollow属性</li>
+<li>链接诱饵</li>
+<li>LSI</li>
+<li>锚文字</li>
+<li>Meta Nofollow属性</li>
+<li>MFA网站</li>
+<li>面包屑导航</li>
+<li>免费链接网站</li>
+<li>内部链接</li>
+<li>内部优化</li>
+<li>爬行和抓取</li>
+<li>排名算法</li>
+<li>PPA</li>
+<li>PPC</li>
+<li>PPI</li>
+<li>PPL</li>
+<li>PPS</li>
+<li>PR劫持</li>
+<li>QDF</li>
+<li>去重</li>
+<li>Robots文件</li>
+<li>三向链接</li>
+<li>SEM</li>
+<li>SEO</li>
+<li>SERP</li>
+<li>沙盒效应</li>
+<li>删除</li>
+<li>社会化媒体</li>
+<li>深度链接</li>
+<li>枢纽网站</li>
+<li>SMM</li>
+<li>搜索引擎友好</li>
+<li>索引</li>
+<li>停止词</li>
+<li>投资回报率ROI</li>
+<li>图片ALT属性</li>
+<li>网站导航</li>
+<li>转向</li>
+<li>URL静态化</li>
+<li>外部链接</li>
+<li>外部优化</li>
+<li>网页快照</li>
+<li>网站目录</li>
+<li>网址规范化</li>
+<li>信任指数</li>
+<li>新闻源</li>
+<li>XML网站地图</li>
+<li>页面劫持</li>
+<li>页面正文</li>
+<li>友情链接</li>
+<li>域名权重</li>
+<li>着陆页</li>
+<li>整合搜索</li>
+<li>蜘蛛</li>
+<li>蜘蛛陷阱</li>
+<li>中文分词</li>
+<li>转化率</li>
+<li>自然排名</li>
+<li>自愿链接</li>
+</ol>
+<p>备注：以上SEO文字来源于Zac的《SEO实战密码：60天网站流量提高20倍》书籍，算这段时间读书笔记记录。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://richieliu.top/2021/08/12/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%8E%92%E5%90%8D%E5%9B%A0%E7%B4%A0%E5%92%8C%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/" data-id="cks8kg539000144uy1nov4jst" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SEO/" rel="tag">SEO</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页 &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Book/" rel="tag">Book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E8%A8%80%E8%87%AA%E8%AF%AD/" rel="tag">自言自语</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Book/" style="font-size: 15px;">Book</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SEO/" style="font-size: 20px;">SEO</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 12.5px;">微信公众号</a> <a href="/tags/%E8%87%AA%E8%A8%80%E8%87%AA%E8%AF%AD/" style="font-size: 17.5px;">自言自语</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/02/08/%E3%80%8A%E5%BE%AE%E4%BF%A1%E4%BA%92%E8%81%94%E7%BD%91%E5%B9%B3%E6%B0%91%E5%88%9B%E4%B8%9A%E3%80%8B/">《微信互联网平民创业》</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/07/%E3%80%8A%E6%8A%8A%E6%97%B6%E9%97%B4%E5%BD%93%E4%BD%9C%E6%9C%8B%E5%8F%8B%E3%80%8B/">《把时间当作朋友》</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/07/2022%E4%B9%A6%E5%8D%95/">2022书单</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/20/Git/">Git</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/02/%E8%BF%9B%E5%8C%96%E5%BC%8F%E8%BF%90%E8%90%A5/">《进化式运营》</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Richie<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
