@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://richieliu.top/2022/02/21/20220221/</loc>
+    <loc>https://richieliu.top/2022/02/28/%E6%B5%81%E9%87%8F%E5%85%B3%E9%94%AE%E8%AF%8D/</loc>
     
-    <lastmod>2022-02-21</lastmod>
+    <lastmod>2022-02-28</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,15 +13,15 @@
 
   <url>
     <loc>https://richieliu.top/</loc>
-    <lastmod>2022-02-21</lastmod>
+    <lastmod>2022-02-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://richieliu.top/tags/test/</loc>
-    <lastmod>2022-02-21</lastmod>
+    <loc>https://richieliu.top/tags/%E6%B5%81%E9%87%8F/</loc>
+    <lastmod>2022-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
