@@ -2,9 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://richieliu.top/2022/02/28/%E6%B5%81%E9%87%8F%E4%B8%9A%E5%8A%A1%E5%85%B3%E9%94%AE%E8%AF%8D/</loc>
+    <loc>https://richieliu.top/2022/03/01/SaaS%E4%B8%9A%E5%8A%A1%E6%9C%AF%E8%AF%AD/</loc>
     
-    <lastmod>2022-02-28</lastmod>
+    <lastmod>2022-03-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://richieliu.top/2022/02/28/%E6%B5%81%E9%87%8F%E4%B8%9A%E5%8A%A1%E6%9C%AF%E8%AF%AD/</loc>
+    
+    <lastmod>2022-03-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,7 +22,7 @@
 
   <url>
     <loc>https://richieliu.top/</loc>
-    <lastmod>2022-02-28</lastmod>
+    <lastmod>2022-03-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -21,7 +30,14 @@
   
   <url>
     <loc>https://richieliu.top/tags/%E6%B5%81%E9%87%8F%E7%94%9F%E6%84%8F/</loc>
-    <lastmod>2022-02-28</lastmod>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://richieliu.top/tags/%E8%BD%AF%E4%BB%B6%E7%94%9F%E6%84%8F/</loc>
+    <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
